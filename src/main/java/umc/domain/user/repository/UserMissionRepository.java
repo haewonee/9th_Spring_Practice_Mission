@@ -35,4 +35,24 @@ public interface UserMissionRepository extends JpaRepository<UserMission,Long> {
     //UserMission 5개를 조회했을때 N만큼 미션 정보 불러옴 -> 1+N
     //countQuery는 페이징하려면 전체 데이터가 총 몇개인지 알아야 할 수 있음.
     //부가적인 페이징 정보는 Pageable에 담겨서 옴
+
+//    //미션 진행도
+//    select mod(count(*),10)
+//    from user_missions um
+//    join missions m on m.id = um.mission_id
+//    join stores s on s.id = m.store_id
+//    where um.user_id = '어느사용자'
+//    and um.status = 'SUCCESS'
+//    and s.region = '어떤지역';
+
+    @Query("SELECT COUNT(um) FROM UserMission um " +
+            "JOIN um.mission m " +
+            "JOIN m.store s " +
+            "WHERE um.user.id = :userId " +
+            "AND um.status = 'SUCCESS' " +
+            "AND s.region.id = :regionId ")
+    Long countSuccessMissionsInRegion(
+            @Param("userId") Long userId,
+            @Param("regionId") Long regionId
+    );
 }
