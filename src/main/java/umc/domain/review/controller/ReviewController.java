@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import umc.domain.review.converter.ReviewConverter;
 import umc.domain.review.dto.res.ReviewResDTO;
 import umc.domain.review.service.query.ReviewQueryService;
 import umc.global.apiPayload.ApiResponse;

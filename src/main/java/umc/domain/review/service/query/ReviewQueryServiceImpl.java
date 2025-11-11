@@ -50,6 +50,7 @@ public class ReviewQueryServiceImpl implements ReviewQueryService {
                 builder.and(review.rating.goe(Float.parseFloat(secondQuery)));
             }
 
+
             List<Review> reviews = reviewRepository.searchReview(builder);
             return reviews.stream()
                     .map(ReviewConverter::toReviewPreviewDTO)
